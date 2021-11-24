@@ -6,7 +6,7 @@ class Hightlight extends React.Component{
     render(props){
         return(
         <div className={this.props.myStyle}>
-            <p className = "statement">Counter VALUE : {this.props.count}</p>
+            <p className = "statement">Counter Value : {this.props.count}</p>
         </div>
         );
     }
