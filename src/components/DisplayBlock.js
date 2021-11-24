@@ -22,7 +22,7 @@ class DisplayBlock extends React.Component {
         axios.get("https://interview-8e4c5-default-rtdb.firebaseio.com/front-end/counter1.json")
             .then(res => {
                 if (res.data !== null) {
-                    this.setState({ count: res.data });
+                    this.setState({ count: res.data },);
                 }
 
             })
@@ -51,20 +51,24 @@ class DisplayBlock extends React.Component {
     increament() {
         this.setState((prevState) => {
             return { count: Math.min(prevState.count + 1, MAX_VALUE) };
+        }, function () {
+            this.putRequest();
         });
-        this.putRequest()
+
     }
 
     decreament() {
         this.setState((prevState) => {
             return { count: Math.min(prevState.count - 1, MAX_VALUE) };
+        },  function () {
+            this.putRequest();
         });
-        this.putRequest()
     }
 
     handleManualInput(event) {
-        this.setState({ count: Math.min(event.target.value, MAX_VALUE) });
-        this.putRequest()
+        this.setState({ count: Math.min(event.target.value, MAX_VALUE) },  function () {
+            this.putRequest();
+        });
     }
 
     render() {
